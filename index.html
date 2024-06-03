@@ -147,70 +147,137 @@
     </section><!-- End Services Section -->
     <div id="scatterPlottooltip" class="tooltip"></div>
     <div id="tooltip" class="tooltip"></div>
-
-    <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts  section-bg">
+<!-- 
+    <section id="sankey" class="sankey" >
       <div class="container">
-
-        <div class="row no-gutters">
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Happy Clients</strong> consequuntur quae</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Projects</strong> adipisci atque cum quia aut</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <i class="bi bi-headset"></i>
-              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hours Of Support</strong> aut commodi quaerat</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <i class="bi bi-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hard Workers</strong> rerum asperiores dolor</p>
-            </div>
-          </div>
-
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Health Expenditure Flow</h2>
+          <p>This section provides an in-depth look at how health expenditures flow within different regions. The Sankey diagram
+          will illustrate the distribution and allocation of health resources, giving insights into how funds are spent and managed
+          in both developed and developing countries.</p>
         </div>
 
+        <div class="row">
+          <div id="sankey_container" class="col-12" data-aos="fade-up" data-aos-delay="100">
+   
+          </div>
+        </div>
       </div>
-    </section><!-- End Counts Section -->
+    </section> -->
 
+    <!-- ======= Counts Section ======= -->
+    <!-- <section id="counts" class="counts  section-bg">
+      <div class="container">
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Health Expenditure Flow</h2>
+          <p>This section provides an in-depth look at how health expenditures flow within different regions. The Sankey diagram
+          will illustrate the distribution and allocation of health resources, giving insights into how funds are spent and managed
+          in both developed and developing countries.</p>
+        </div>
+
+
+      </div>
+    </section> -->
+
+
+    <section id="counts" class="counts  section-bg">
+      <div class="container">
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Box Plot of Life Expectancy</h2>
+          <p>In our journey to understand global life expectancy, we have examined various facets such as the geographical distribution and economic factors. Now, let's dive deeper into the distribution of life expectancy across developed and developing countries using box plots. This type of visualization is crucial because it not only shows the median life expectancy but also illustrates the range and variability within each category.
+          By visualizing life expectancy through box plots, we can gain insights into the spread of life expectancy values, identify outliers, and compare the central tendencies of developed and developing countries. This will help us understand the disparities in health outcomes between these two groups and highlight areas needing attention.
+          In the previous sections, we observed how GDP and country status influence life expectancy through scatter plots and bar graphs. The box plots will complement these visualizations by providing a clear picture of the distribution and variability of life expectancy within each group, adding another layer to our analysis.</p>
+    
+        </div>
+        
+        <div class="row">
+          <select class="form-select mt-3" aria-label="Default select example" id="boxPlot_years_options">
+                 <option disabled>Year</option>
+          </select>
+        <div id="boxPlot_container"  class="chart-container" data-aos="fade-up" data-aos-delay="100"></div>
+
+       </div>
+
+      </div>
+    </section>
+    <div id="boxtooltip" class="tooltip"></div>
+    
     <!-- ======= Cta Section ======= -->
     <section id="cta" class="cta">
       <div class="container" data-aos="zoom-in">
-
-        <div class="text-center">
-          <h3>Call To Action</h3>
-          <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <a class="cta-btn" href="#">Call To Action</a>
-        </div>
-
+          <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+              <h2>Bubble Chart</h2>
+              <p>Bubble Chart to visualize relations between life expectancy and 
+                different factors. The bigger the bubble, the bigger the population.
+                2015 data have many missing values (NaN), that's why 
+                filtering on this year somo graphs have very few bubbles.
+              </p>
+          </div>
+          <div id="bubbleChart_container" class="row">
+              <select class="form-select mt-3" aria-label="Default select example" id="bubbleChart_years_options">
+                  <option disabled>Year</option>
+              </select>
+              <select class="form-select mt-3" aria-label="Default select example" id="selectFactor">
+                  <option value="ICR">Income composition of resources</option>
+                  <option value="GDP">GDP</option>
+                  <option value="AdultMortality">Adult Mortality</option>
+                  <option value="InfantDeaths">Infant deaths</option>
+                  <option value="Alcohol">Alcohol</option>
+                  <option value="HepB">Hepatitis B</option>
+                  <option value="Polio">Polio</option>
+                  <option value="HIV">HIV/AIDS</option>
+                  <option value="PercExpend">Percentage expenditure</option>
+                  <option value="TotalExpend">Total expenditure</option>
+              </select>
+          </div>
       </div>
-    </section><!-- End Cta Section -->
+  </section>
+
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+      <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+        <h2>Density plot</h2>
+        <p>Density plot of global life expectancy and the probability of death
+          using a Kernel Density Estimator (KDE). The play button helps to visualize
+          the changes over the years. Each tick on the animation after clicking it 
+          represents a year (from 2000 since the beginning to end on 2015).
+        </p>
+      </div>
+      <div class="controls" data-aos="fade-up" data-aos-delay="100">
+        <button class="button-4" id="playButton" style="width: 190px;">Play</button>
+      </div>
+      <div id="densityPlot_container" class="chart-container" data-aos="fade-up" data-aos-delay="100"></div>
+    </div>
+  </section>
+
+  <section id="trends" class="counts  section-bg">
+    <div class="container">
+      <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+        <h2>Trends in Life Expectancy Over Time</h2>
+        <p>In our journey to understand global life expectancy, we have examined various facets such as the geographical distribution and economic factors. Now, let's dive deeper into the distribution of life expectancy across developed and developing countries using box plots. This type of visualization is crucial because it not only shows the median life expectancy but also illustrates the range and variability within each category.
+        By visualizing life expectancy through box plots, we can gain insights into the spread of life expectancy values, identify outliers, and compare the central tendencies of developed and developing countries. This will help us understand the disparities in health outcomes between these two groups and highlight areas needing attention.
+        In the previous sections, we observed how GDP and country status influence life expectancy through scatter plots and bar graphs. The box plots will complement these visualizations by providing a clear picture of the distribution and variability of life expectancy within each group, adding another layer to our analysis.</p>
+  
+      </div>
+      
+      <div class="row">
+        <div id="lineChart_container"  class="chart-container" data-aos="fade-up" data-aos-delay="100"></div>
+      </div>
+
+    </div>
+  </section>
 
     <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio">
       <div class="container">
 
         <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-          <h2>Portfolio</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <h2>Density plot</h2>
+          <p>Density plot of global life expectancy and the probability of death
+            using a Kernel Density Stimator (KDE). The play button helps to visualize
+            the changes over the years. Each tick on the animation after clicking it 
+            represents a year (from 2000 since the beginning to end on 2015).
+          </p>
         </div>
 
         <div class="row" data-aos="fade-in">
@@ -319,7 +386,7 @@
         </div>
 
       </div>
-    </section><!-- End Portfolio Section -->
+    </section>End Portfolio Section
 
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials section-bg">
@@ -635,6 +702,10 @@
   <script src="assets/js/chloropeth.js"></script>
   <script src="assets/js/barGraphs.js"></script>
   <script src="assets/js/scatteredPlot.js"></script>
+  <script src="assets/js/boxPlot.js"></script>
+  <script src="assets/js/bubbleChart,js"></script>
+  <script src="assets/js/densityPlot.js"></script>
+  <script type="module" src="assets/js/lineChart.js"></script>
 
 
 </body>
