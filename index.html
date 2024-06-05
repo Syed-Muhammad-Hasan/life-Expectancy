@@ -272,15 +272,25 @@
 
   <div id="linetooltip" class="tooltip"></div>
 
-  <section id="inRadial" class="counts section-bg">
+  <section id="radialDeveloped" class="counts section-bg">
+
+
+
     <div class="container">
+
+
       <div class="section-title" data-aos="fade-in" data-aos-delay="100">
         <h2>Trends in Life Expectancy Over Time</h2>
         <p>
           In our journey to understand global life expectancy, we have examined various facets such as the geographical distribution and economic factors. Now, let's dive deeper into the distribution of life expectancy across developed and developing countries using radial charts. This type of visualization is crucial because it not only shows the median life expectancy but also illustrates the range and variability within each category.
         </p>
       </div>
-      <div class="row">
+      
+      <select class="form-select mt-3" aria-label="Default select example" id="radialChart_years_options">
+        <option disabled>Year</option>
+      </select>
+
+      <div style="margin-top:40px ;" class="row">
         <div class="col-md-6">
           <div id="radialChart_container" class="chart-container" data-aos="fade-up" data-aos-delay="100">
             <svg width="660" height="660"></svg>
@@ -292,6 +302,30 @@
             By visualizing a clear picture of the distribution and variability of life expectancy within each group, adding another layer to our analysis.
           </p>
         </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="radialDeveloping" class="counts section-bg" style="padding-top:0px ;">
+
+    <div class="container">
+      <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <p style="margin-top: 150px; margin-left: 50px; text-align: justify;">
+            In our journey to understand global life expectancy, we have examined various facets such as the geographical distribution and economic factors. Now, let's dive deeper into the distribution of life expectancy across developed and developing countries using radial charts. This type of visualization is crucial because it not only shows the median life expectancy but also illustrates the range and variability within each category.
+            By visualizing a clear picture of the distribution and variability of life expectancy within each group, adding another layer to our analysis.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <div style="padding-left:20px ;" id="radialChartDeveloping_container" class="chart-container" data-aos="fade-up" data-aos-delay="100">
+            <svg width="660" height="660"></svg>
+          </div>
+        </div>
+
 
       </div>
     </div>
