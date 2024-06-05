@@ -1483,3 +1483,28 @@ text {
   pointer-events: none;
   opacity: 0;
 }
+
+.chart-container {
+  position: relative;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.button-4 {
+  background-color: #3081D0;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-4:hover {
+  background-color: #1A5B9B;
+}

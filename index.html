@@ -14,7 +14,9 @@
   <link href="assets/img/favicon.ico" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -27,11 +29,13 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- <script src="https://d3js.org/d3.v7.min.js"></script> -->
+
   <script src="https://cdn.jsdelivr.net/npm/d3-geo@"></script>
   <script src="https://cdn.jsdelivr.net/npm/d3-geo-projection@4"></script>
   <script src="https://unpkg.com/topojson@3"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+
 
 </head>
 
@@ -51,10 +55,12 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">Overview</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="#services">Status</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio">Statistics</a></li>
+          <li><a class="nav-link scrollto" href="#team">Other Factors</a></li>
+          <li><a class="nav-link scrollto" href="#Density">Density</a></li>
+          <li><a class="nav-link scrollto" href="#regional">Regional</a></li>
+          <li><a class="nav-link scrollto" href="#radial">Radial</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -66,10 +72,12 @@
   <section id="hero">
     <div class="hero-container" data-aos="fade-up">
       <h1>Life Expectancy Data Analysis</h1>
-      <h4>In this project, we will be using life expextancy dataset, available <a href="https://www.kaggle.com/datasets/kumarajarshi/life-expectancy-who" 
-         target="_blank">here</a>. The dataset consists of life expectancy and health factors for 193 countries 
-          collected by the WHO. We will be analysing this dataset and make useful results by which you can decide 
-          how long will you live.</h4>
+      <h4>Life expectancy tells us how long people usually live in a certain place. It's a big deal because it shows how
+        healthy and happy a group of people generally are. This can be because of good healthcare, having enough money, and
+        living in a nice place. In this project, we're going to look at lots of different things that might make people live
+        longer or shorter lives. We'll look at how this has changed over time and compare it in different parts of the world
+        and for people with different amounts of money. By doing this, we hope to find out why some people live longer than
+        others.</h4>
       <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
     </div>
   </section><!-- End Hero -->
@@ -84,22 +92,28 @@
             <div class="content">
               <h3>Life Expectancy at a glance!</h3>
               <p>
-                Here we are showing life expectancies of different countries at the very top level by using chloropeth maps.
-                We have cleaned the dataset by dropping the countries for which life expectancy data was not available.
-                Furthermore, from the dataset the data for occupied/conflicted states are not available.
-                
+                The choropleth map provides a visual representation of global life expectancy trends from 2000 to 2015,
+                highlighting significant regional disparities and overall progress. High life expectancy, often
+                exceeding 80 years, is predominantly seen in North America, Western Europe, and parts of East Asia,
+                indicating the benefits of advanced healthcare systems and higher living standards. In contrast, regions
+                like Sub-Saharan Africa and parts of South Asia exhibit lower life expectancy, often below 60 years, due
+                to factors like poverty, limited healthcare access, and higher disease prevalence. The map's interactive
+                features, such as zooming and hover effects, enhance the exploration of these patterns, showing both the
+                strides made globally and the areas needing further improvement.
+
               </p>
             </div>
           </div>
           <div class="col-xl-9 border border-info">
             <div>
-               <select class="form-select mt-3" aria-label="Default select example" id="chrolopeth_years_options" onchange="loadChrolopethMap()">
-                  <option disabled>Year</option>
-                </select>
+              <select class="form-select mt-3" aria-label="Default select example" id="chrolopeth_years_options"
+                onchange="loadChrolopethMap()">
+                <option disabled>Year</option>
+              </select>
             </div>
-            <div >
-               <div id="chrolopeth_container" class="mt-4" data-aos="fade-up" data-aos-delay="100"></div>
-               
+            <div>
+              <div id="chrolopeth_container" class="mt-4" data-aos="fade-up" data-aos-delay="100"></div>
+
             </div>
           </div>
         </div>
@@ -113,513 +127,270 @@
 
         <div class="section-title" data-aos="fade-in" data-aos-delay="100">
           <h2>Developed VS Developing</h2>
-          <p>It is important to do life expectancy analysis based on country status i.e. either it will be "Developed" or "Developing".
-            Along with that status an important factor to analyse is countries GDP. This combination gives a comprehensive 
-            overview over the relationship between economic performance and health outcomes. 
-
-            Moreover, we also have sorted top 10 and bottom 10 countries by life expectancies. The color of each bar represents the 
-            status of country. These two charts provide powerful insights into the global health landscape. 
-            They highlight the disparities between developing and developed nations.
-
+          <p>The scatter plot illustrates the relationship between GDP and life expectancy for various countries, categorized by
+          their development status, from 2000 to 2015. Higher GDP generally correlates with longer life expectancy, highlighting
+          the role of economic prosperity in enhancing public health and longevity. Developed countries, depicted in blue,
+          consistently show higher life expectancy at a given GDP level compared to developing countries, represented in red. This
+          discrepancy underscores the multifaceted nature of development, where factors such as healthcare infrastructure,
+          education, and social services also significantly influence health outcomes. The interactive elements, including
+          tooltips and color-coded statuses, provide a nuanced understanding of how economic and developmental contexts impact
+          life expectancy across the globe.
           </p>
         </div>
 
         <div class="row">
-           <select class="form-select mt-3" aria-label="Default select example" id="scatterPlot_years_options" onchange="loadScatterPlot()">
-                  <option disabled>Year</option>
-         </select>
-         <div id="scatterPlot_container"  data-aos="fade-up" data-aos-delay="100"></div>
+          <select class="form-select mt-3" aria-label="Default select example" id="scatterPlot_years_options"
+            onchange="loadScatterPlot()">
+            <option disabled>Year</option>
+          </select>
+          <div id="scatterPlot_container" data-aos="fade-up" data-aos-delay="100"></div>
 
         </div>
         <div class="container">
-         <div class="row no-gutters ">
+          <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+            <h2>Top and Bottom</h2>
+            <p>The bar graphs for the top 10 and bottom 10 countries by life expectancy provide a detailed comparison of the best and
+            worst-performing nations in terms of health outcomes for each selected year from 2000 to 2015. The charts highlight
+            significant disparities between the highest and lowest life expectancies, reflecting varying levels of healthcare,
+            economic development, and social conditions across countries. Developed countries consistently populate the top 10,
+            showcasing higher life expectancies, while developing countries often appear in the bottom 10, indicating the challenges
+            they face in improving health outcomes. The color-coded bars based on development status and interactive tooltips
+            enhance the visualization's clarity, making it easier to discern and understand the data's implications.
+            </p>
+          </div>
+          <div class="row no-gutters ">
             <div class="col-xl-6">
-               <div id="top10_barGraph_container"></div>
-              </div>
-              <div class="col-xl-6">
-               <div id="bottom10_barGraph_container"></div>
-              </div>
-         </div>
+              <div id="top10_barGraph_container"></div>
+            </div>
+            <div class="col-xl-6">
+              <div id="bottom10_barGraph_container"></div>
+            </div>
+          </div>
         </div>
-      
+
 
       </div>
     </section><!-- End Services Section -->
     <div id="scatterPlottooltip" class="tooltip"></div>
     <div id="tooltip" class="tooltip"></div>
+    <!-- 
+    <section id="sankey" class="sankey" >
+      <div class="container">
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Health Expenditure Flow</h2>
+          <p>This section provides an in-depth look at how health expenditures flow within different regions. The Sankey diagram
+          will illustrate the distribution and allocation of health resources, giving insights into how funds are spent and managed
+          in both developed and developing countries.</p>
+        </div>
+
+        <div class="row">
+          <div id="sankey_container" class="col-12" data-aos="fade-up" data-aos-delay="100">
+   
+          </div>
+        </div>
+      </div>
+    </section> -->
 
     <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts  section-bg">
+    <!-- <section id="counts" class="counts  section-bg">
       <div class="container">
-
-        <div class="row no-gutters">
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Happy Clients</strong> consequuntur quae</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Projects</strong> adipisci atque cum quia aut</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <i class="bi bi-headset"></i>
-              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hours Of Support</strong> aut commodi quaerat</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <i class="bi bi-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hard Workers</strong> rerum asperiores dolor</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Counts Section -->
-
-    <!-- ======= Cta Section ======= -->
-    <section id="cta" class="cta">
-      <div class="container" data-aos="zoom-in">
-
-        <div class="text-center">
-          <h3>Call To Action</h3>
-          <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <a class="cta-btn" href="#">Call To Action</a>
-        </div>
-
-      </div>
-    </section><!-- End Cta Section -->
-
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
-      <div class="container">
-
         <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-          <h2>Portfolio</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <h2>Health Expenditure Flow</h2>
+          <p>This section provides an in-depth look at how health expenditures flow within different regions. The Sankey diagram
+          will illustrate the distribution and allocation of health resources, giving insights into how funds are spent and managed
+          in both developed and developing countries.</p>
         </div>
 
-        <div class="row" data-aos="fade-in">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row portfolio-container" data-aos="fade-up">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Portfolio Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg">
-      <div class="container">
-
-        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-          <h2>Testimonials</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section><!-- End Testimonials Section -->
-
-    <!-- ======= Team Section ======= -->
-    <section id="team" class="team">
-      <div class="container">
-
-        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-          <h2>Team</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6">
-            <div class="member" data-aos="fade-up">
-              <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Chief Executive Officer</span>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="member" data-aos="fade-up" data-aos-delay="150">
-              <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Product Manager</span>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="member" data-aos="fade-up" data-aos-delay="300">
-              <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>CTO</span>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Team Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <!-- <section id="contact" class="contact section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="info-box mb-4">
-              <i class="bx bx-map"></i>
-              <h3>Our Address</h3>
-              <p>A108 Adam Street, New York, NY 535022</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box  mb-4">
-              <i class="bx bx-envelope"></i>
-              <h3>Email Us</h3>
-              <p>contact@example.com</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box  mb-4">
-              <i class="bx bx-phone-call"></i>
-              <h3>Call Us</h3>
-              <p>+1 5589 55488 55</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-6 ">
-            <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
-          </div>
-
-          <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div>
-
-        </div>
 
       </div>
     </section> -->
-    <!-- End Contact Section -->
+
+
+    <section id="portfolio" class="counts  section-bg">
+      <div class="container">
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Statistical Analysis</h2>
+          <p>The box plot visualization provides an insightful comparison of life expectancy distributions between developed and
+            developing countries from 2000 to 2015. By selecting a year, users can see how the life expectancies differ
+            significantly across these two groups. The box plot highlights key statistical measures such as the median, quartiles,
+            and ranges, clearly demonstrating the higher life expectancy in developed countries compared to developing ones.</p>
+
+        </div>
+
+        <div class="row">
+          <select class="form-select mt-3" aria-label="Default select example" id="boxPlot_years_options">
+            <option disabled>Year</option>
+          </select>
+          <div id="boxPlot_container" class="chart-container" data-aos="fade-up" data-aos-delay="100"></div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <div id="boxtooltip" class="tooltip"></div>
+
+    <!-- ======= Cta Section ======= -->
+    <section id="team" class="cta">
+      <div class="container" data-aos="zoom-in">
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Other factors</h2>
+          <p>The bubble chart offers a comprehensive view of life expectancy trends across countries from 2000 to 2015,
+            integrating various socio-economic factors. Users can select a specific year and factor from the dropdown menus to
+            explore the relationship between life expectancy and the chosen variable. The bubble sizes represent population size,
+            with larger bubbles indicating countries with higher populations. Developed and developing countries are color-coded
+            for easy identification. Hovering over a bubble reveals detailed information about the country and the selected
+            factor, aiding in deeper analysis. The chart dynamically adjusts to window resizing, ensuring optimal viewing
+            experience across devices. This interactive visualization facilitates a nuanced understanding of how different factors
+            influence life expectancy globally
+          </p>
+        </div>
+        <div id="bubbleChart_container" class="row">
+          <select class="form-select mt-3" aria-label="Default select example" id="bubbleChart_years_options">
+            <option disabled>Year</option>
+          </select>
+          <select class="form-select mt-3" aria-label="Default select example" id="selectFactor">
+            <option value="ICR">Income composition of resources</option>
+            <option value="GDP">GDP</option>
+            <option value="AdultMortality">Adult Mortality</option>
+            <option value="InfantDeaths">Infant deaths</option>
+            <option value="Alcohol">Alcohol</option>
+            <option value="HepB">Hepatitis B</option>
+            <option value="Polio">Polio</option>
+            <option value="HIV">HIV/AIDS</option>
+            <option value="PercExpend">Percentage expenditure</option>
+            <option value="TotalExpend">Total expenditure</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section id="Density" class="portfolio">
+      <div class="container">
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Life Expectancy Over Time</h2>
+          <p>The density plots dynamically illustrate the evolution of life expectancy trends over the years 2000 to 2015, providing
+          insights into the distribution of life expectancy across different countries. Developed and developing nations are
+          distinguished by color, enabling easy comparison. Each curve represents the probability density function of life
+          expectancy for the respective group, with peaks indicating the most common life expectancies. The interactive tooltip
+          displays the year and status upon hovering over the plot, enhancing understanding. Additionally, a play button triggers
+          an animated sequence, sequentially revealing the density plots for each year, allowing for a comprehensive exploration
+          of changes over time
+          </p>
+        </div>
+        <div class="controls" data-aos="fade-up" data-aos-delay="100">
+          <button class="button-4" id="playButton" style="width: 190px;">Play</button>
+        </div>
+        <div id="densityPlot_container" class="chart-container" data-aos="fade-up" data-aos-delay="100"></div>
+      </div>
+    </section>
+
+    <section id="regional" class="counts  section-bg">
+      <div class="container">
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Regional Life Expectancy</h2>
+          <p>The line chart depicts the life expectancy trends across different regions from 2000 to 2015, offering insights into
+            how life expectancy varies globally. Each line represents a region, with color-coded legends facilitating easy
+            identification. Hovering over a line or legend highlights the corresponding data, while a tooltip provides detailed
+            information about life expectancy and date upon mouseover on individual data points. The chart's axes are labeled for
+            clarity, with the x-axis denoting years and the y-axis representing life expectancy. This visualization aids in
+            understanding how life expectancy has evolved over time across various regions</p>
+
+        </div>
+
+        <div class="row">
+          <div id="lineChart_container" class="chart-container" data-aos="fade-up" data-aos-delay="100"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <div id="linetooltip" class="tooltip"></div>
+    <section id="radial">
+      <section id="radialDeveloped" class="counts section-bg">
+
+
+
+        <div class="container">
+  
+  
+          <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+            <h2>A Radial Perspective</h2>
+          </div>
+  
+          <select class="form-select mt-3" aria-label="Default select example" id="radialChart_years_options">
+            <option disabled>Year</option>
+          </select>
+  
+          <div style="margin-top:40px ;" class="row">
+            <div class="col-md-6">
+              <div id="radialChart_container" class="chart-container" data-aos="fade-up" data-aos-delay="100">
+                <svg width="660" height="660"></svg>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+              <h2>Unveiling the Developed World's Health Profile</h2> 
+              <p style="margin-top: 100px; margin-left: 50px; text-align: justify;">
+                Intricately crafted radial charts shed light on the health metrics of developed nations across various categories such
+                as life expectancy, disease prevention, and mortality rates. Each arc delineates a specific metric, while the arc's
+                length represents its magnitude. Developed countries, meticulously selected and scrutinized, adorn this visual
+                narrative, offering insights into their populace's well-being. From life expectancy to alcohol consumption.
+              </p>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </section>
+  
+      <section id="radialDeveloping" class="counts section-bg" style="padding-top:0px ;">
+  
+        <div class="container">
+          <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+  
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+                <h2>Navigating the Health Landscape of Developing Nations</h2> 
+              <p style="margin-top: 100px; margin-left: 50px; text-align: justify;">
+                Embark on a visual journey through the health landscapes of developing nations, illuminated by captivating radial charts
+                meticulously crafted to unveil critical health indicators. Delve into realms of life expectancy, disease prevalence, and
+                mortality rates intricately woven into each arc, offering a vivid portrayal of these nations' health narratives.
+              </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div style="padding-left:20px ;" id="radialChartDeveloping_container" class="chart-container"
+                data-aos="fade-up" data-aos-delay="100">
+                <svg width="660" height="660"></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+   
 
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
+  <footer id="footer" class="text-center text-white">
     <div class="footer-top">
       <div class="container">
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6">
-            <div class="footer-info">
-              <h3>Squadfree</h3>
-              <p class="pb-3"><em>Qui repudiandae et eum dolores alias sed ea. Qui suscipit veniam excepturi quod.</em></p>
-              <p>
-                A108 Adam Street <br>
-                NY 535022, USA<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> info@example.com<br>
-              </p>
-              <div class="social-links mt-3">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Squadfree</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        <section class="">
+          <p class="d-flex justify-content-center align-items-center">
+            <h1 style="font-weight: bolder;">Group - Rizz</h1>
+            <h3 style="font-weight: bolder;">Syed Muhammad Hasan</h3>
+            <h3 style="font-weight: bolder;">Muhammad Ahsan Iqabl</h3>
+          </p>
+        </section>
       </div>
     </div>
   </footer><!-- End Footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -630,11 +401,32 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
+
+
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/chloropeth.js"></script>
-  <script src="assets/js/barGraphs.js"></script>
-  <script src="assets/js/scatteredPlot.js"></script>
+  <script src="https://d3js.org/d3.v7.js"></script>
+  <script>
+    var d3v7 = window.d3;
+    window.d3 = null;
+  </script>
+  <script type="text/javascript" src="assets/js/main.js"></script>
+  <script type="text/javascript" src="assets/js/chloropeth.js"></script>
+  <script type="text/javascript" src="assets/js/barGraphs.js"></script>
+  <script type="text/javascript" src="assets/js/scatteredPlot.js"></script>
+  <script type="text/javascript" src="assets/js/boxPlot.js"></script>
+  <script type="text/javascript" src="assets/js/bubbleChart,js"></script>
+  <script type="text/javascript" src="assets/js/densityPlot.js"></script>
+
+
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script>
+    var d3v4 = window.d3;
+    window.d3 = null;
+  </script>
+
+  <script type="text/javascript" src="assets/js/lineChart.js"></script>
+  <script src="assets/js/d3-scale-radial.js"></script>
+  <script type="text/javascript" src="assets/js/radial.js"></script>
 
 
 </body>

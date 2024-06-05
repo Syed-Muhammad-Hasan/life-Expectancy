@@ -32,15 +32,15 @@ function drawScatterPlot(year) {
     width = 1000 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
-    d3.select("#scatterPlot_container").select("svg").remove();
+    d3v7.select("#scatterPlot_container").select("svg").remove();
 
-    d3.csv(`../data/${year}.csv`).then(function (data) {
+    d3v7.csv(`../data/${year}.csv`).then(function (data) {
         data.forEach(d => {
             d.LifeExpectancy = +d["Life expectancy "];
             d.GDP = +d.GDP;
         });
 
-        var svg = d3.select("#scatterPlot_container")
+        var svg = d3v7.select("#scatterPlot_container")
             .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
@@ -49,22 +49,22 @@ function drawScatterPlot(year) {
             .append("g")
             .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-        var x = d3.scaleLinear()
-            .domain([0, d3.max(data, d => d.GDP)]).nice()
+        var x = d3v7.scaleLinear()
+            .domain([0, d3v7.max(data, d => d.GDP)]).nice()
             .range([0, width]);
 
-        var y = d3.scaleLinear()
-            .domain([0, d3.max(data, d => d.LifeExpectancy)]).nice()
+        var y = d3v7.scaleLinear()
+            .domain([0, d3v7.max(data, d => d.LifeExpectancy)]).nice()
             .range([height, 0]);
 
-        var color = d3.scaleOrdinal()
+        var color = d3v7.scaleOrdinal()
             .domain(["Developing", "Developed"])
             .range(["#ff9999", "#9999ff"]);
 
         // Add X axis
         svg.append("g")
             .attr("transform", `translate(0, ${height})`)
-            .call(d3.axisBottom(x))
+            .call(d3v7.axisBottom(x))
             .append("text")
             .attr("x", width)
             .attr("y", -10)
@@ -74,7 +74,7 @@ function drawScatterPlot(year) {
 
         // Add Y axis
         svg.append("g")
-            .call(d3.axisLeft(y))
+            .call(d3v7.axisLeft(y))
             .append("text")
             .attr("x", 6)
             .attr("y", 6)
@@ -128,19 +128,19 @@ function drawScatterPlot(year) {
             .text(d => d);
     });
     function mouseoverScatter(event, d) {
-        d3.select("#scatterPlottooltip")
+        d3v7.select("#scatterPlottooltip")
             .style("opacity", 1)
             .html(`<strong>Country:</strong> ${d.Country}<br><strong>GDP:</strong> ${d.GDP} USD <br><strong>Life Expectancy:</strong> ${d.LifeExpectancy}`);
     }
 
     function mousemoveScatter(event, d) {
-        d3.select("#scatterPlottooltip")
+        d3v7.select("#scatterPlottooltip")
             .style("left", (event.pageX + 20) + "px")
             .style("top", (event.pageY - 28) + "px");
     }
 
     function mouseleaveScatter(d) {
-        d3.select("#scatterPlottooltip")
+        d3v7.select("#scatterPlottooltip")
             .style("opacity", 0);
     }
 }

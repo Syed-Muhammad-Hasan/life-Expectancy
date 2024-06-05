@@ -3,8 +3,8 @@ var margin = { top: 20, right: 70, bottom: 20, left: 50 };
 function initializeChart(containerId) {
     var width = 700;
     var height = 400 - margin.top - margin.bottom; // Initial height for Top 10 and Bottom 10
-    d3.select("#" + containerId).select("svg").remove();
-    var svg = d3.select("#" + containerId)
+    d3v7.select("#" + containerId).select("svg").remove();
+    var svg = d3v7.select("#" + containerId)
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -13,8 +13,8 @@ function initializeChart(containerId) {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var x = d3.scaleLinear().range([0, width]);
-    var y = d3.scaleBand().range([0, height]).padding(.1);
+    var x = d3v7.scaleLinear().range([0, width]);
+    var y = d3v7.scaleBand().range([0, height]).padding(.1);
 
     svg.append("g")
         .attr("class", "x-axis")
@@ -28,7 +28,7 @@ function initializeChart(containerId) {
 function loadBarGraphs(year) {
     var topChart = initializeChart("top10_barGraph_container");
     var bottomChart = initializeChart("bottom10_barGraph_container");
-    d3.csv(`../data/${year}.csv`).then(function (data) {
+    d3v7.csv(`../data/${year}.csv`).then(function (data) {
         data.forEach(function (d) {
             d['Life expectancy '] = +d['Life expectancy '];
         });
@@ -49,11 +49,11 @@ function updateBarChart(chart, filteredData) {
     var width = 600;
 
     chart.x.range([0, width]);
-    chart.x.domain([0, d3.max(filteredData, d => d['Life expectancy '])]);
+    chart.x.domain([0, d3v7.max(filteredData, d => d['Life expectancy '])]);
     chart.y.domain(filteredData.map(d => d.Country));
 
-    chart.svg.select(".x-axis").call(d3.axisBottom(chart.x));
-    chart.svg.select(".y-axis").call(d3.axisLeft(chart.y));
+    chart.svg.select(".x-axis").call(d3v7.axisBottom(chart.x));
+    chart.svg.select(".y-axis").call(d3v7.axisLeft(chart.y));
 
     // Hide Y-axis labels
     chart.svg.selectAll(".y-axis text").style("opacity", 0);
@@ -112,7 +112,7 @@ function updateBarChart(chart, filteredData) {
     // Mouse events
     chart.svg.selectAll("rect")
         .on("mouseover", function (event, d) {
-            d3.select("#tooltip")
+            d3v7.select("#tooltip")
                 .style("display", "block")
                 .style("opacity", "1")
                 .html("<b>" + d.Country + "</b>" +
@@ -121,18 +121,18 @@ function updateBarChart(chart, filteredData) {
                     )
                 .style("left", (event.pageX + 10) + "px")
                 .style("top", (event.pageY + 10) + "px");
-            d3.select(this).attr("fill", "#D3D3D3");
+            d3v7.select(this).attr("fill", "#d3v7d3v7d3v7");
         })
         .on("mousemove", function (event) {
-            d3.select("#tooltip")
+            d3v7.select("#tooltip")
                 .style("left", (event.pageX + 10) + "px")
                 .style("top", (event.pageY + 10) + "px");
         })
         .on("mouseout", function () {
-            d3.select("#tooltip")
+            d3v7.select("#tooltip")
                 .style("display", "none")
                 .style("opacity", "0")
-            d3.select(this).attr("fill", d => colorMap[d.Status]);
+            d3v7.select(this).attr("fill", d => colorMap[d.Status]);
         });
     if(chart.parentId.includes("top")){
         chart.svg.append("text")
