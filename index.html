@@ -27,11 +27,13 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- <script src="https://d3js.org/d3.v7.min.js"></script> -->
+
   <script src="https://cdn.jsdelivr.net/npm/d3-geo@"></script>
   <script src="https://cdn.jsdelivr.net/npm/d3-geo-projection@4"></script>
   <script src="https://unpkg.com/topojson@3"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+
 
 </head>
 
@@ -200,6 +202,7 @@
 
       </div>
     </section>
+
     <div id="boxtooltip" class="tooltip"></div>
     
     <!-- ======= Cta Section ======= -->
@@ -266,6 +269,34 @@
 
     </div>
   </section>
+
+  <div id="linetooltip" class="tooltip"></div>
+
+  <section id="inRadial" class="counts section-bg">
+    <div class="container">
+      <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+        <h2>Trends in Life Expectancy Over Time</h2>
+        <p>
+          In our journey to understand global life expectancy, we have examined various facets such as the geographical distribution and economic factors. Now, let's dive deeper into the distribution of life expectancy across developed and developing countries using radial charts. This type of visualization is crucial because it not only shows the median life expectancy but also illustrates the range and variability within each category.
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div id="radialChart_container" class="chart-container" data-aos="fade-up" data-aos-delay="100">
+            <svg width="660" height="660"></svg>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <p style="margin-top: 150px; margin-left: 50px; text-align: justify;">
+            In our journey to understand global life expectancy, we have examined various facets such as the geographical distribution and economic factors. Now, let's dive deeper into the distribution of life expectancy across developed and developing countries using radial charts. This type of visualization is crucial because it not only shows the median life expectancy but also illustrates the range and variability within each category.
+            By visualizing a clear picture of the distribution and variability of life expectancy within each group, adding another layer to our analysis.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  
 
     <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio">
@@ -697,15 +728,32 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
+
+
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/chloropeth.js"></script>
-  <script src="assets/js/barGraphs.js"></script>
-  <script src="assets/js/scatteredPlot.js"></script>
-  <script src="assets/js/boxPlot.js"></script>
-  <script src="assets/js/bubbleChart,js"></script>
-  <script src="assets/js/densityPlot.js"></script>
-  <script type="module" src="assets/js/lineChart.js"></script>
+  <script src="https://d3js.org/d3.v7.js"></script>
+  <script>
+    var d3v7 = window.d3;
+    window.d3 = null;
+  </script>
+  <script type="text/javascript" src="assets/js/main.js"></script>
+  <script type="text/javascript" src="assets/js/chloropeth.js"></script>
+  <script type="text/javascript" src="assets/js/barGraphs.js"></script>
+  <script type="text/javascript" src="assets/js/scatteredPlot.js"></script>
+  <script type="text/javascript" src="assets/js/boxPlot.js"></script>
+  <script type="text/javascript" src="assets/js/bubbleChart,js"></script>
+  <script type="text/javascript" src="assets/js/densityPlot.js"></script>
+
+
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script>
+    var d3v4 = window.d3;
+    window.d3 = null;
+  </script>
+  
+  <script type="text/javascript" src="assets/js/lineChart.js"></script>
+  <script src="assets/js/d3-scale-radial.js"></script>
+  <script type="text/javascript" src="assets/js/radial.js"></script>
 
 
 </body>

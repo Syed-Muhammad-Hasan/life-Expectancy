@@ -1,6 +1,7 @@
+
 (function() {
     document.addEventListener('DOMContentLoaded', function() {
-        var tooltip = d3.select("#tooltip");
+        var tooltip = d3v7.select("#tooltip");
 
         var margin = {top: 40, right: 30, bottom: 60, left: 70},
         width = 1000 - margin.left - margin.right,
@@ -8,30 +9,31 @@
 
         // var svgWidth = getWidth();
         // var width = svgWidth - margin.left - margin.right;
-        var container = d3.select("#densityPlot_container");
+        var container = d3v7.select("#densityPlot_container");
+        
         const svg = container.append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        var x = d3.scaleLinear()
+        var x = d3v7.scaleLinear()
             .domain([30, 100])
             .range([0, width]);
         svg.append("g")
             .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x));
+            .call(d3v7.axisBottom(x));
 
-        var y = d3.scaleLinear()
+        var y = d3v7.scaleLinear()
             .domain([0, 0.1])
             .range([height, 0]);
         svg.append("g")
-            .call(d3.axisLeft(y));
+            .call(d3v7.axisLeft(y));
 
         function kernelDensityEstimator(kernel, X) {
             return function(V) {
                 return X.map(function(x) {
-                    return [x, d3.mean(V, function(v) { return kernel(x - v); })];
+                    return [x, d3v7.mean(V, function(v) { return kernel(x - v); })];
                 });
             };
         }
@@ -44,8 +46,8 @@
 
         // Create color legend
         var colorLegendData = [
-            {label: "Developed", color: "#3081D0"},
-            {label: "Developing", color: "#7E1717"}
+            {label: "Developed", color: "#9999ff"},
+            {label: "Developing", color: "#ff9999"}
         ];
 
         // Create color legend at the top of the chart
@@ -92,7 +94,7 @@
             .style("font-size", "12px");
 
         function updateDensityPlot(selectedYear) {
-            d3.csv("data/LifeExpectancyUpdated.csv").then(function(data) {
+            d3v7.csv("data/LifeExpectancyUpdated.csv").then(function(data) {
                 var filteredData = data.filter(function(d) {
                     return d.Year == selectedYear;
                 });
@@ -117,11 +119,11 @@
                     .datum(densityDeveloped)
                     .attr("fill", "none")
                     .attr("opacity", 1)
-                    .attr("stroke", "#3081D0")
+                    .attr("stroke", "#9999ff")
                     .attr("stroke-width", 2)
                     .attr("stroke-linejoin", "round")
-                    .attr("d", d3.line()
-                        .curve(d3.curveBasis)
+                    .attr("d", d3v7.line()
+                        .curve(d3v7.curveBasis)
                         .x(function(d) { return x(d[0]); })
                         .y(function(d) { return y(d[1]); })
                     );
@@ -130,11 +132,11 @@
                     .datum(densityDeveloping)
                     .attr("fill", "none")
                     .attr("opacity", 1)
-                    .attr("stroke", "#7E1717")
+                    .attr("stroke", "#ff9999")
                     .attr("stroke-width", 2)
                     .attr("stroke-linejoin", "round")
-                    .attr("d", d3.line()
-                        .curve(d3.curveBasis)
+                    .attr("d", d3v7.line()
+                        .curve(d3v7.curveBasis)
                         .x(function(d) { return x(d[0]); })
                         .y(function(d) { return y(d[1]); })
                     );

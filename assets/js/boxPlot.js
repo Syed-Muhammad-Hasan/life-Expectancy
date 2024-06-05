@@ -38,7 +38,7 @@
       boxPlotSelectMenu.appendChild(option);
     }
 
-    var container = d3.select("#boxPlot_container");
+    var container = d3v7.select("#boxPlot_container");
     var margin = {
         top: 40,
         right: 30,
@@ -54,7 +54,7 @@
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    const x = d3.scaleBand()
+    const x = d3v7.scaleBand()
       .range([0, width])
       .domain(["Developed", "Developing"])
       .paddingInner(1)
@@ -63,32 +63,32 @@
       .attr("transform", "translate(0," + height + ")")
       .attr("class", "x-axis");
 
-    const y = d3.scaleLinear()
+    const y = d3v7.scaleLinear()
       .range([height, 0]);
     svg.append("g")
       .attr("class", "y-axis");
 
-    const colorMap = { "Developed": "#3081D0", "Developing": "#7E1717" };
-    const tooltip = d3.select("#boxtooltip");
+    const colorMap = { "Developed": "#9999ff", "Developing": "#ff9999" };
+    const tooltip = d3v7.select("#boxtooltip");
 
     function updateBoxPlot(selectedYear) {
-      d3.csv("data/DevelopedLE.csv").then(function(data) {
+      d3v7.csv("data/DevelopedLE.csv").then(function(data) {
         const filteredData = data.filter(d => d.Year == selectedYear);
 
-        const sumstat = d3.rollup(filteredData, function(d) {
-          const q1 = d3.quantile(d.map(g => g.LifeExpectancy).sort(d3.ascending), .25);
-          const median = d3.quantile(d.map(g => g.LifeExpectancy).sort(d3.ascending), .5);
-          const q3 = d3.quantile(d.map(g => g.LifeExpectancy).sort(d3.ascending), .75);
+        const sumstat = d3v7.rollup(filteredData, function(d) {
+          const q1 = d3v7.quantile(d.map(g => g.LifeExpectancy).sort(d3v7.ascending), .25);
+          const median = d3v7.quantile(d.map(g => g.LifeExpectancy).sort(d3v7.ascending), .5);
+          const q3 = d3v7.quantile(d.map(g => g.LifeExpectancy).sort(d3v7.ascending), .75);
           const interQuantileRange = q3 - q1;
           const min = q1 - 1.5 * interQuantileRange;
           const max = q3 + 1.5 * interQuantileRange;
-          const mean = d3.mean(d.map(g => g.LifeExpectancy));
+          const mean = d3v7.mean(d.map(g => g.LifeExpectancy));
           return({q1, median, q3, interQuantileRange, min, max, mean});
         }, d => d.Status);
 
-        y.domain([0, d3.max(filteredData, d => +d.LifeExpectancy)]);
-        svg.select(".y-axis").transition().duration(800).call(d3.axisLeft(y));
-        svg.select(".x-axis").call(d3.axisBottom(x));
+        y.domain([0, d3v7.max(filteredData, d => +d.LifeExpectancy)]);
+        svg.select(".y-axis").transition().duration(800).call(d3v7.axisLeft(y));
+        svg.select(".x-axis").call(d3v7.axisBottom(x));
 
         const boxWidth = 100;
 
@@ -159,7 +159,7 @@
                   "<br/>Q3: " + d[1].q3.toFixed(3))
             .style("left", (event.pageX + 10) + "px")
             .style("top", (event.pageY + 10) + "px");
-          d3.select(this).attr("fill", "#D3D3D3");
+          d3v7.select(this).attr("fill", "#d3v7d3v7d3v7");
         })
         .on("mousemove", function(event) {
           tooltip.style("left", (event.pageX + 10) + "px")
@@ -168,7 +168,7 @@
         .on("mouseout", function() {
           tooltip.style("display", "none")
             .style("opacity", "0");
-          d3.select(this).attr("fill", d => colorMap[d[0]]);
+          d3v7.select(this).attr("fill", d => colorMap[d[0]]);
         });
 
         vertLines.exit().remove();
