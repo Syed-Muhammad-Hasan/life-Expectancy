@@ -125,7 +125,7 @@ function drawLineChart() {
             tooltip
                 .html(
                     `Date: <b> ${d.key}</b><br>` +
-                    `Life Expectancy: <b> ${d.value}</b><br>`)
+                    `Life Expectancy: <b> ${d3v4.format(",.2f")(d.value)}</b><br>`)
                 .style('top', `${event.pageY}px`)
                 .style('left', `${event.pageX + 20}px`);
         }
@@ -181,7 +181,6 @@ function drawLineChart() {
             .attr("transform", "translate(" + (width + 30) + "," + 20 + ")"); // Adjust legend position
 
         const regionKeys = nestedData.map(entry => entry.key);
-
         legend.selectAll('rect')
             .data(regionKeys)
             .enter()
@@ -191,7 +190,7 @@ function drawLineChart() {
             .attr('width', size)
             .attr('height', size)
             .attr('class', function(d) {
-                return "tooltip legendLine _" + d.replaceAll(" ", "")
+                return "legendLine _" + d.replaceAll(" ", "")
             })
             .attr('fill', function(d, i) {
                 return colorScale(d);

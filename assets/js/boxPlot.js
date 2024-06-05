@@ -132,21 +132,7 @@
           .attr("y2", d => y(d[1].median))
           .attr("stroke", "black");
 
-        // // Tooltip
-        // svg.selectAll(".boxes")
-        //   .on("mouseover", function(event, d) {
-        //     tooltip.style("display", "block")
-        //       .html("<b>" + d[0] + "</b>" + "<br/>Mean: " + d[1].mean.toFixed(3) + "<br/>Median: " + d[1].median.toFixed(2) + "<br/>Q1: " + d[1].q1.toFixed(2) + "<br/>Q3: " + d[1].q3.toFixed(3))
-        //       .style("left", (event.pageX + 10) + "px")
-        //       .style("top", (event.pageY + 10) + "px");
-        //   })
-        //   .on("mousemove", function(event) {
-        //     tooltip.style("left", (event.pageX + 10) + "px")
-        //       .style("top", (event.pageY + 10) + "px");
-        //   })
-        //   .on("mouseout", function() {
-        //     tooltip.style("display", "none");
-        //   });
+        
         
         svg.selectAll(".boxes")
         .on("mouseover", function(event, d) {
