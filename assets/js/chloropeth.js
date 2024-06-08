@@ -63,7 +63,7 @@ function drawChrolopethMap(year) {
   const line = svg.append("g");
 
   // declare URL
-  const dataURL = '../data/cleaned_life_data.csv';
+  const dataURL = 'data/cleaned_life_data.csv';
   const polygonsURL = "https://raw.githubusercontent.com/GDS-ODSSS/unhcr-dataviz-platform/master/data/geospatial/world_polygons_simplified.json";
   const polylinesURL = "https://raw.githubusercontent.com/GDS-ODSSS/unhcr-dataviz-platform/master/data/geospatial/world_lines_simplified.json";
 

@@ -25,7 +25,7 @@ function loadChrolopethMapContinentWise() {
 function drawChrolopethMapContinentWise(year) {
   continents = ['Asia', 'Europe', 'Africa', 'South America', 'North America', 'Oceania' ];
   continents.forEach((continent)=>{
-    d3v7.csv('../data/cleaned_life_data_continents.csv').then(function(data) {
+    d3v7.csv('data/cleaned_life_data_continents.csv').then(function(data) {
       var filteredData = data.filter(d => d.Year === year && d.continent === continent);
       makeMap(filteredData, continent.toLowerCase().replace(' ','-'))
     })
@@ -73,7 +73,7 @@ const continentScales = {
     .range(["#DCE9FF", "#B0D1FF", "#8EBEFF", "#589BE5", "#0072BC", "#005BB5"])
     .unknown("#E6E6E6");
 
-    d3v7.json("../data/"+continent+".geojson").then(geoData => {
+    d3v7.json("data/"+continent+".geojson").then(geoData => {
         // Merge the data with the GeoJSON
         const countries = geoData.features;
         countries.forEach(country => {
