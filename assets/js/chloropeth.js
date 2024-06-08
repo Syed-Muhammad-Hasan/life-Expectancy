@@ -160,22 +160,5 @@ function drawChrolopethMap(year) {
   svg.select(".legendThreshold")
     .call(legend);
 
-  // set note
-  // svg
-  // .append('text')
-  //     .attr('class', 'note')
-  //     .attr('x', width*0.01)
-  //     .attr('y', height*0.96)
-  //     .attr('text-anchor', 'start')
-  //     .style('font-size', 7)
-  // .text('Source: UNHCR Refugee Data Finder');
-  // svg
-  // .append('text')
-  //     .attr('class', 'note')
-  //     .attr('x', width*0.01)
-  //     .attr('y', height*0.99)
-  //     .attr('text-anchor', 'start')
-  //     .style('font-size', 7)
-  // .text('The boundaries and names shown and the designations used on this map do not imply official endorsement or acceptance by the United Nations.');
 }
 loadChrolopethMap();

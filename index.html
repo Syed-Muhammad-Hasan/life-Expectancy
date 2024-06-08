@@ -35,6 +35,8 @@
   <script src="https://cdn.jsdelivr.net/npm/d3-geo-projection@4"></script>
   <script src="https://unpkg.com/topojson@3"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+  <script src="https://cdn.anychart.com/geodata/latest/custom/world/world.js"></script>
+
 
 
 </head>
@@ -55,12 +57,13 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">Overview</a></li>
+          <li><a class="nav-link scrollto" href="#regional">Regional</a></li>
           <li><a class="nav-link scrollto" href="#services">Status</a></li>
           <li><a class="nav-link scrollto" href="#portfolio">Statistics</a></li>
           <li><a class="nav-link scrollto" href="#team">Other Factors</a></li>
-          <li><a class="nav-link scrollto" href="#Density">Density</a></li>
-          <li><a class="nav-link scrollto" href="#regional">Regional</a></li>
           <li><a class="nav-link scrollto" href="#radial">Radial</a></li>
+          <li><a class="nav-link scrollto" href="#Density">Density</a></li>
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -73,18 +76,90 @@
     <div class="hero-container" data-aos="fade-up">
       <h1>Life Expectancy Data Analysis</h1>
       <h4>Life expectancy tells us how long people usually live in a certain place. It's a big deal because it shows how
-        healthy and happy a group of people generally are. This can be because of good healthcare, having enough money, and
-        living in a nice place. In this project, we're going to look at lots of different things that might make people live
-        longer or shorter lives. We'll look at how this has changed over time and compare it in different parts of the world
-        and for people with different amounts of money. By doing this, we hope to find out why some people live longer than
+        healthy and happy a group of people generally are. This can be because of good healthcare, having enough money,
+        and
+        living in a nice place. In this project, we're going to look at lots of different things that might make people
+        live
+        longer or shorter lives. We'll look at how this has changed over time and compare it in different parts of the
+        world
+        and for people with different amounts of money. By doing this, we hope to find out why some people live longer
+        than
         others.</h4>
       <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
     </div>
   </section><!-- End Hero -->
 
   <main id="main">
-
     <!-- ======= About Section ======= -->
+    <!-- <section id="about" class="about">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="content col-xl-3 d-flex align-items-stretch" data-aos="fade-up">
+            <div class="content">
+              <h3>Life Expectancy at a glance!</h3>
+              <p>
+                The choropleth map provides a visual representation of global life expectancy trends from 2000 to 2015,
+                highlighting significant regional disparities and overall progress. High life expectancy, often
+                exceeding 80 years, is predominantly seen in North America, Western Europe, and parts of East Asia,
+                indicating the benefits of advanced healthcare systems and higher living standards. In contrast, regions
+                like Sub-Saharan Africa and parts of South Asia exhibit lower life expectancy, often below 60 years, due
+                to factors like poverty, limited healthcare access, and higher disease prevalence. The map's interactive
+                features, such as zooming and hover effects, enhance the exploration of these patterns, showing both the
+                strides made globally and the areas needing further improvement.
+
+              </p>
+            </div>
+          </div>
+          <div class="col-xl-9 border border-info">
+            <div>
+              <select class="form-select mt-3" aria-label="Default select example" id="chrolopeth_years_options"
+                onchange="loadChrolopethMap()">
+                <option disabled>Year</option>
+              </select>
+            </div>
+            <div>
+              <div id="chrolopeth_container" class="mt-4" data-aos="fade-up" data-aos-delay="100"></div>
+
+            </div>
+          </div>
+          <div class="col-xl-12">
+            <select class="form-select mt-3" aria-label="Default select example" id="continent_years_options"
+              onchange="loadChrolopethMapContinentWise()">
+              <option disabled>Year</option>
+            </select>
+
+            <div class="map-container mt-3">
+              <div class="col-xl-4 p-4">
+                <div id="map-asia" class=" border border-info"></div>
+                <div id="tooltip-asia" class="tooltip"></div>
+              </div>
+              <div class="col-xl-4 p-4">
+                <div id="map-europe" class=" border border-info"></div>
+                <div id="tooltip-europe" class="tooltip"></div>
+              </div>
+              <div class="col-xl-4 p-4">
+                <div id="map-africa" class=" border border-info"></div>
+                <div id="tooltip-africa" class="tooltip"></div>
+              </div>
+              <div class="col-xl-4 p-4">
+                <div id="map-north-america" class=" border border-info"></div>
+                <div id="tooltip-north-america" class="tooltip"></div>
+              </div>
+              <div class="col-xl-4 p-4">
+                <div id="map-south-america" class=" border border-info"></div>
+                <div id="tooltip-south-america" class="tooltip"></div>
+              </div>
+              <div class="col-xl-4 p-4">
+                <div id="map-oceania" class=" border border-info"></div>
+                <div id="tooltip-oceania" class="tooltip"></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>End About Section -->
     <section id="about" class="about">
       <div class="container">
         <div class="row no-gutters">
@@ -116,25 +191,91 @@
 
             </div>
           </div>
+          <div class="col-xl-12">
+            <select class="form-select mt-3" aria-label="Default select example" id="continent_years_options"
+              onchange="loadChrolopethMapContinentWise()">
+              <option disabled>Year</option>
+            </select>
+
+            <div class="map-container mt-3">
+              <div class="col-xl-4 p-4">
+                <div id="map-asia" class=" border border-info"></div>
+                <div id="tooltip-asia" class="tooltip"></div>
+              </div>
+              <div class="col-xl-4 p-4">
+                <div id="map-europe" class=" border border-info"></div>
+                <div id="tooltip-europe" class="tooltip"></div>
+              </div>
+              <div class="col-xl-4 p-4">
+                <div id="map-africa" class=" border border-info"></div>
+                <div id="tooltip-africa" class="tooltip"></div>
+              </div>
+              <div class="col-xl-4 p-4">
+                <div id="map-north-america" class=" border border-info"></div>
+                <div id="tooltip-north-america" class="tooltip"></div>
+              </div>
+              <div class="col-xl-4 p-4">
+                <div id="map-south-america" class=" border border-info"></div>
+                <div id="tooltip-south-america" class="tooltip"></div>
+              </div>
+              <div class="col-xl-4 p-4">
+                <div id="map-oceania" class=" border border-info"></div>
+                <div id="tooltip-oceania" class="tooltip"></div>
+              </div>
+
+            </div>
+          </div>
         </div>
 
       </div>
-    </section><!-- End About Section -->
+    </section>
+    <section id="regional" class="counts  section-bg">
+      <div class="container">
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Regional Life Expectancy</h2>
+          <p>The line chart depicts the life expectancy trends across different regions from 2000 to 2015, offering
+            insights into
+            how life expectancy varies globally. Each line represents a region, with color-coded legends facilitating
+            easy
+            identification. Hovering over a line or legend highlights the corresponding data, while a tooltip provides
+            detailed
+            information about life expectancy and date upon mouseover on individual data points. The chart's axes are
+            labeled for
+            clarity, with the x-axis denoting years and the y-axis representing life expectancy. This visualization aids
+            in
+            understanding how life expectancy has evolved over time across various regions</p>
 
+        </div>
+
+        <div class="row">
+          <div id="lineChart_container" class="chart-container" data-aos="fade-up" data-aos-delay="100"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <div id="linetooltip" class="tooltip"></div>
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="container">
 
         <div class="section-title" data-aos="fade-in" data-aos-delay="100">
           <h2>Developed VS Developing</h2>
-          <p>The scatter plot illustrates the relationship between GDP and life expectancy for various countries, categorized by
-          their development status, from 2000 to 2015. Higher GDP generally correlates with longer life expectancy, highlighting
-          the role of economic prosperity in enhancing public health and longevity. Developed countries, depicted in blue,
-          consistently show higher life expectancy at a given GDP level compared to developing countries, represented in red. This
-          discrepancy underscores the multifaceted nature of development, where factors such as healthcare infrastructure,
-          education, and social services also significantly influence health outcomes. The interactive elements, including
-          tooltips and color-coded statuses, provide a nuanced understanding of how economic and developmental contexts impact
-          life expectancy across the globe.
+          <p>The scatter plot illustrates the relationship between GDP and life expectancy for various countries,
+            categorized by
+            their development status, from 2000 to 2015. Higher GDP generally correlates with longer life expectancy,
+            highlighting
+            the role of economic prosperity in enhancing public health and longevity. Developed countries, depicted in
+            blue,
+            consistently show higher life expectancy at a given GDP level compared to developing countries, represented
+            in red. This
+            discrepancy underscores the multifaceted nature of development, where factors such as healthcare
+            infrastructure,
+            education, and social services also significantly influence health outcomes. The interactive elements,
+            including
+            tooltips and color-coded statuses, provide a nuanced understanding of how economic and developmental
+            contexts impact
+            life expectancy across the globe.
           </p>
         </div>
 
@@ -149,13 +290,19 @@
         <div class="container">
           <div class="section-title" data-aos="fade-in" data-aos-delay="100">
             <h2>Top and Bottom</h2>
-            <p>The bar graphs for the top 10 and bottom 10 countries by life expectancy provide a detailed comparison of the best and
-            worst-performing nations in terms of health outcomes for each selected year from 2000 to 2015. The charts highlight
-            significant disparities between the highest and lowest life expectancies, reflecting varying levels of healthcare,
-            economic development, and social conditions across countries. Developed countries consistently populate the top 10,
-            showcasing higher life expectancies, while developing countries often appear in the bottom 10, indicating the challenges
-            they face in improving health outcomes. The color-coded bars based on development status and interactive tooltips
-            enhance the visualization's clarity, making it easier to discern and understand the data's implications.
+            <p>The bar graphs for the top 10 and bottom 10 countries by life expectancy provide a detailed comparison of
+              the best and
+              worst-performing nations in terms of health outcomes for each selected year from 2000 to 2015. The charts
+              highlight
+              significant disparities between the highest and lowest life expectancies, reflecting varying levels of
+              healthcare,
+              economic development, and social conditions across countries. Developed countries consistently populate
+              the top 10,
+              showcasing higher life expectancies, while developing countries often appear in the bottom 10, indicating
+              the challenges
+              they face in improving health outcomes. The color-coded bars based on development status and interactive
+              tooltips
+              enhance the visualization's clarity, making it easier to discern and understand the data's implications.
             </p>
           </div>
           <div class="row no-gutters ">
@@ -173,47 +320,18 @@
     </section><!-- End Services Section -->
     <div id="scatterPlottooltip" class="tooltip"></div>
     <div id="tooltip" class="tooltip"></div>
-    <!-- 
-    <section id="sankey" class="sankey" >
-      <div class="container">
-        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-          <h2>Health Expenditure Flow</h2>
-          <p>This section provides an in-depth look at how health expenditures flow within different regions. The Sankey diagram
-          will illustrate the distribution and allocation of health resources, giving insights into how funds are spent and managed
-          in both developed and developing countries.</p>
-        </div>
-
-        <div class="row">
-          <div id="sankey_container" class="col-12" data-aos="fade-up" data-aos-delay="100">
-   
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-    <!-- ======= Counts Section ======= -->
-    <!-- <section id="counts" class="counts  section-bg">
-      <div class="container">
-        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-          <h2>Health Expenditure Flow</h2>
-          <p>This section provides an in-depth look at how health expenditures flow within different regions. The Sankey diagram
-          will illustrate the distribution and allocation of health resources, giving insights into how funds are spent and managed
-          in both developed and developing countries.</p>
-        </div>
-
-
-      </div>
-    </section> -->
-
 
     <section id="portfolio" class="counts  section-bg">
       <div class="container">
         <div class="section-title" data-aos="fade-in" data-aos-delay="100">
           <h2>Statistical Analysis</h2>
-          <p>The box plot visualization provides an insightful comparison of life expectancy distributions between developed and
+          <p>The box plot visualization provides an insightful comparison of life expectancy distributions between
+            developed and
             developing countries from 2000 to 2015. By selecting a year, users can see how the life expectancies differ
-            significantly across these two groups. The box plot highlights key statistical measures such as the median, quartiles,
-            and ranges, clearly demonstrating the higher life expectancy in developed countries compared to developing ones.</p>
+            significantly across these two groups. The box plot highlights key statistical measures such as the median,
+            quartiles,
+            and ranges, clearly demonstrating the higher life expectancy in developed countries compared to developing
+            ones.</p>
 
         </div>
 
@@ -235,13 +353,20 @@
       <div class="container" data-aos="zoom-in">
         <div class="section-title" data-aos="fade-in" data-aos-delay="100">
           <h2>Other factors</h2>
-          <p>The bubble chart offers a comprehensive view of life expectancy trends across countries from 2000 to 2015,
-            integrating various socio-economic factors. Users can select a specific year and factor from the dropdown menus to
-            explore the relationship between life expectancy and the chosen variable. The bubble sizes represent population size,
-            with larger bubbles indicating countries with higher populations. Developed and developing countries are color-coded
-            for easy identification. Hovering over a bubble reveals detailed information about the country and the selected
-            factor, aiding in deeper analysis. The chart dynamically adjusts to window resizing, ensuring optimal viewing
-            experience across devices. This interactive visualization facilitates a nuanced understanding of how different factors
+          <p style="color: black;">The bubble chart offers a comprehensive view of life expectancy trends across
+            countries from 2000 to 2015,
+            integrating various socio-economic factors. Users can select a specific year and factor from the dropdown
+            menus to
+            explore the relationship between life expectancy and the chosen variable. The bubble sizes represent
+            population size,
+            with larger bubbles indicating countries with higher populations. Developed and developing countries are
+            color-coded
+            for easy identification. Hovering over a bubble reveals detailed information about the country and the
+            selected
+            factor, aiding in deeper analysis. The chart dynamically adjusts to window resizing, ensuring optimal
+            viewing
+            experience across devices. This interactive visualization facilitates a nuanced understanding of how
+            different factors
             influence life expectancy globally
           </p>
         </div>
@@ -265,63 +390,22 @@
       </div>
     </section>
 
-    <section id="Density" class="portfolio">
-      <div class="container">
-        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-          <h2>Life Expectancy Over Time</h2>
-          <p>The density plots dynamically illustrate the evolution of life expectancy trends over the years 2000 to 2015, providing
-          insights into the distribution of life expectancy across different countries. Developed and developing nations are
-          distinguished by color, enabling easy comparison. Each curve represents the probability density function of life
-          expectancy for the respective group, with peaks indicating the most common life expectancies. The interactive tooltip
-          displays the year and status upon hovering over the plot, enhancing understanding. Additionally, a play button triggers
-          an animated sequence, sequentially revealing the density plots for each year, allowing for a comprehensive exploration
-          of changes over time
-          </p>
-        </div>
-        <div class="controls" data-aos="fade-up" data-aos-delay="100">
-          <button class="button-4" id="playButton" style="width: 190px;">Play</button>
-        </div>
-        <div id="densityPlot_container" class="chart-container" data-aos="fade-up" data-aos-delay="100"></div>
-      </div>
-    </section>
-
-    <section id="regional" class="counts  section-bg">
-      <div class="container">
-        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-          <h2>Regional Life Expectancy</h2>
-          <p>The line chart depicts the life expectancy trends across different regions from 2000 to 2015, offering insights into
-            how life expectancy varies globally. Each line represents a region, with color-coded legends facilitating easy
-            identification. Hovering over a line or legend highlights the corresponding data, while a tooltip provides detailed
-            information about life expectancy and date upon mouseover on individual data points. The chart's axes are labeled for
-            clarity, with the x-axis denoting years and the y-axis representing life expectancy. This visualization aids in
-            understanding how life expectancy has evolved over time across various regions</p>
-
-        </div>
-
-        <div class="row">
-          <div id="lineChart_container" class="chart-container" data-aos="fade-up" data-aos-delay="100"></div>
-        </div>
-
-      </div>
-    </section>
-
-    <div id="linetooltip" class="tooltip"></div>
     <section id="radial">
       <section id="radialDeveloped" class="counts section-bg">
 
 
 
         <div class="container">
-  
-  
+
+
           <div class="section-title" data-aos="fade-in" data-aos-delay="100">
             <h2>A Radial Perspective</h2>
           </div>
-  
+
           <select class="form-select mt-3" aria-label="Default select example" id="radialChart_years_options">
             <option disabled>Year</option>
           </select>
-  
+
           <div style="margin-top:40px ;" class="row">
             <div class="col-md-6">
               <div id="radialChart_container" class="chart-container" data-aos="fade-up" data-aos-delay="100">
@@ -330,35 +414,42 @@
             </div>
             <div class="col-md-6">
               <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-              <h2>Unveiling the Developed World's Health Profile</h2> 
-              <p style="margin-top: 100px; margin-left: 50px; text-align: justify;">
-                Intricately crafted radial charts shed light on the health metrics of developed nations across various categories such
-                as life expectancy, disease prevention, and mortality rates. Each arc delineates a specific metric, while the arc's
-                length represents its magnitude. Developed countries, meticulously selected and scrutinized, adorn this visual
-                narrative, offering insights into their populace's well-being. From life expectancy to alcohol consumption.
-              </p>
+                <h2>Unveiling the Developed World's Health Profile</h2>
+                <p style="margin-top: 100px; margin-left: 50px; text-align: justify;">
+                  Intricately crafted radial charts shed light on the health metrics of developed nations across various
+                  categories such
+                  as life expectancy, disease prevention, and mortality rates. Each arc delineates a specific metric,
+                  while the arc's
+                  length represents its magnitude. Developed countries, meticulously selected and scrutinized, adorn
+                  this visual
+                  narrative, offering insights into their populace's well-being. From life expectancy to alcohol
+                  consumption.
+                </p>
               </div>
             </div>
-  
+
           </div>
         </div>
       </section>
-  
+
       <section id="radialDeveloping" class="counts section-bg" style="padding-top:0px ;">
-  
+
         <div class="container">
           <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-  
+
           </div>
           <div class="row">
             <div class="col-md-6">
               <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-                <h2>Navigating the Health Landscape of Developing Nations</h2> 
-              <p style="margin-top: 100px; margin-left: 50px; text-align: justify;">
-                Embark on a visual journey through the health landscapes of developing nations, illuminated by captivating radial charts
-                meticulously crafted to unveil critical health indicators. Delve into realms of life expectancy, disease prevalence, and
-                mortality rates intricately woven into each arc, offering a vivid portrayal of these nations' health narratives.
-              </p>
+                <h2>Navigating the Health Landscape of Developing Nations</h2>
+                <p style="margin-top: 100px; margin-left: 50px; text-align: justify;">
+                  Embark on a visual journey through the health landscapes of developing nations, illuminated by
+                  captivating radial charts
+                  meticulously crafted to unveil critical health indicators. Delve into realms of life expectancy,
+                  disease prevalence, and
+                  mortality rates intricately woven into each arc, offering a vivid portrayal of these nations' health
+                  narratives.
+                </p>
               </div>
             </div>
             <div class="col-md-6">
@@ -371,7 +462,32 @@
         </div>
       </section>
     </section>
-   
+    <section id="Density" class="portfolio">
+      <div class="container">
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Life Expectancy Over Time</h2>
+          <p>The density plots dynamically illustrate the evolution of life expectancy trends over the years 2000 to
+            2015, providing
+            insights into the distribution of life expectancy across different countries. Developed and developing
+            nations are
+            distinguished by color, enabling easy comparison. Each curve represents the probability density function of
+            life
+            expectancy for the respective group, with peaks indicating the most common life expectancies. The
+            interactive tooltip
+            displays the year and status upon hovering over the plot, enhancing understanding. Additionally, a play
+            button triggers
+            an animated sequence, sequentially revealing the density plots for each year, allowing for a comprehensive
+            exploration
+            of changes over time
+          </p>
+        </div>
+        <div class="controls" data-aos="fade-up" data-aos-delay="100">
+          <button class="button-4" id="playButton" style="width: 190px;">Play</button>
+        </div>
+        <div id="densityPlot_container" class="chart-container" data-aos="fade-up" data-aos-delay="100"></div>
+      </div>
+    </section>
+
 
   </main><!-- End #main -->
 
@@ -381,9 +497,9 @@
       <div class="container">
         <section class="">
           <p class="d-flex justify-content-center align-items-center">
-            <h1 style="font-weight: bolder;">Group - Rizz</h1>
-            <h3 style="font-weight: bolder;">Syed Muhammad Hasan</h3>
-            <h3 style="font-weight: bolder;">Muhammad Ahsan Iqabl</h3>
+          <h1 style="font-weight: bolder;">Group - Rizz</h1>
+          <h3 style="font-weight: bolder;">Syed Muhammad Hasan</h3>
+          <h3 style="font-weight: bolder;">Muhammad Ahsan Iqabl</h3>
           </p>
         </section>
       </div>
@@ -427,6 +543,7 @@
   <script type="text/javascript" src="assets/js/lineChart.js"></script>
   <script src="assets/js/d3-scale-radial.js"></script>
   <script type="text/javascript" src="assets/js/radial.js"></script>
+  <script type="text/javascript" src="assets/js/continent_chloropeth.js"></script>
 
 
 </body>
