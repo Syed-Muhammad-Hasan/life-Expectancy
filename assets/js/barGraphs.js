@@ -28,7 +28,7 @@ function initializeChart(containerId) {
 function loadBarGraphs(year) {
     var topChart = initializeChart("top10_barGraph_container");
     var bottomChart = initializeChart("bottom10_barGraph_container");
-    d3v7.csv(`../data/${year}.csv`).then(function (data) {
+    d3v7.csv(`data/${year}.csv`).then(function (data) {
         data.forEach(function (d) {
             d['Life expectancy '] = +d['Life expectancy '];
         });
