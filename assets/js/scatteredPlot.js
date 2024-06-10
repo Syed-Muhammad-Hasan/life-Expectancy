@@ -34,7 +34,7 @@ function drawScatterPlot(year) {
 
     d3v7.select("#scatterPlot_container").select("svg").remove();
 
-    d3v7.csv(`../data/${year}.csv`).then(function (data) {
+    d3v7.csv(`data/${year}.csv`).then(function (data) {
         data.forEach(d => {
             d.LifeExpectancy = +d["Life expectancy "];
             d.GDP = +d.GDP;
