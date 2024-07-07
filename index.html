@@ -61,7 +61,7 @@
           <li><a class="nav-link scrollto" href="#services">Status</a></li>
           <li><a class="nav-link scrollto" href="#portfolio">Statistics</a></li>
           <li><a class="nav-link scrollto" href="#team">Other Factors</a></li>
-          <li><a class="nav-link scrollto" href="#radial">Radial</a></li>
+          <li><a class="nav-link scrollto" href="#radial">Line & Box</a></li>
           <li><a class="nav-link scrollto" href="#Density">Density</a></li>
 
         </ul>
@@ -91,75 +91,6 @@
 
   <main id="main">
     <!-- ======= About Section ======= -->
-    <!-- <section id="about" class="about">
-      <div class="container">
-        <div class="row no-gutters">
-          <div class="content col-xl-3 d-flex align-items-stretch" data-aos="fade-up">
-            <div class="content">
-              <h3>Life Expectancy at a glance!</h3>
-              <p>
-                The choropleth map provides a visual representation of global life expectancy trends from 2000 to 2015,
-                highlighting significant regional disparities and overall progress. High life expectancy, often
-                exceeding 80 years, is predominantly seen in North America, Western Europe, and parts of East Asia,
-                indicating the benefits of advanced healthcare systems and higher living standards. In contrast, regions
-                like Sub-Saharan Africa and parts of South Asia exhibit lower life expectancy, often below 60 years, due
-                to factors like poverty, limited healthcare access, and higher disease prevalence. The map's interactive
-                features, such as zooming and hover effects, enhance the exploration of these patterns, showing both the
-                strides made globally and the areas needing further improvement.
-
-              </p>
-            </div>
-          </div>
-          <div class="col-xl-9 border border-info">
-            <div>
-              <select class="form-select mt-3" aria-label="Default select example" id="chrolopeth_years_options"
-                onchange="loadChrolopethMap()">
-                <option disabled>Year</option>
-              </select>
-            </div>
-            <div>
-              <div id="chrolopeth_container" class="mt-4" data-aos="fade-up" data-aos-delay="100"></div>
-
-            </div>
-          </div>
-          <div class="col-xl-12">
-            <select class="form-select mt-3" aria-label="Default select example" id="continent_years_options"
-              onchange="loadChrolopethMapContinentWise()">
-              <option disabled>Year</option>
-            </select>
-
-            <div class="map-container mt-3">
-              <div class="col-xl-4 p-4">
-                <div id="map-asia" class=" border border-info"></div>
-                <div id="tooltip-asia" class="tooltip"></div>
-              </div>
-              <div class="col-xl-4 p-4">
-                <div id="map-europe" class=" border border-info"></div>
-                <div id="tooltip-europe" class="tooltip"></div>
-              </div>
-              <div class="col-xl-4 p-4">
-                <div id="map-africa" class=" border border-info"></div>
-                <div id="tooltip-africa" class="tooltip"></div>
-              </div>
-              <div class="col-xl-4 p-4">
-                <div id="map-north-america" class=" border border-info"></div>
-                <div id="tooltip-north-america" class="tooltip"></div>
-              </div>
-              <div class="col-xl-4 p-4">
-                <div id="map-south-america" class=" border border-info"></div>
-                <div id="tooltip-south-america" class="tooltip"></div>
-              </div>
-              <div class="col-xl-4 p-4">
-                <div id="map-oceania" class=" border border-info"></div>
-                <div id="tooltip-oceania" class="tooltip"></div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>End About Section -->
     <section id="about" class="about">
       <div class="container">
         <div class="row no-gutters">
@@ -391,39 +322,28 @@
     </section>
 
     <section id="radial">
-      <section id="radialDeveloped" class="counts section-bg">
-
-
-
+      <section id="lineBoxDeveloped" class="counts section-bg">
         <div class="container">
-
-
           <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-            <h2>A Radial Perspective</h2>
+            <h2>Schooling Effects</h2>
           </div>
-
-          <select class="form-select mt-3" aria-label="Default select example" id="radialChart_years_options">
-            <option disabled>Year</option>
-          </select>
-
           <div style="margin-top:40px ;" class="row">
-            <div class="col-md-6">
-              <div id="radialChart_container" class="chart-container" data-aos="fade-up" data-aos-delay="100">
-                <svg width="660" height="660"></svg>
+            <div class="col-md-8">
+              <div id="lineBoxDeveloped_container" class="chart-container" data-aos="fade-up" data-aos-delay="100">
+             
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
               <div class="section-title" data-aos="fade-in" data-aos-delay="100">
                 <h2>Unveiling the Developed World's Health Profile</h2>
-                <p style="margin-top: 100px; margin-left: 50px; text-align: justify;">
-                  Intricately crafted radial charts shed light on the health metrics of developed nations across various
-                  categories such
-                  as life expectancy, disease prevention, and mortality rates. Each arc delineates a specific metric,
-                  while the arc's
-                  length represents its magnitude. Developed countries, meticulously selected and scrutinized, adorn
-                  this visual
-                  narrative, offering insights into their populace's well-being. From life expectancy to alcohol
-                  consumption.
+                <p style="text-align: justify;">
+                  <ul style="text-align: justify;">
+                      <li><strong>Oceania</strong>: The box plot for Oceania shows a median schooling percentage around 19, with the interquartile range spanning from approximately 18 to 20. The whiskers indicate a minimum of around 17 and a maximum of around 21 while life expectancy approximately 77 years.</li>
+                      <li><strong>Europe</strong>: The box plot for Europe shows a median schooling percentage around 16, with the interquartile range spanning from approximately 15 to 17. The whiskers indicate a minimum of around 14 and a maximum of around 18 while life expectancy approximately 75 years.</li>
+                      <li><strong>Asia</strong>: The box plot for Asia shows a median schooling percentage around 14, with the interquartile range spanning from approximately 13 to 15. The whiskers indicate a minimum of around 12 and a maximum of around 16 while life expectancy approximately 73 years.</li>
+                  </ul>
+
+                  <p style="text-align: justify;"> Overall, the chart illustrates a clear trend between life expectancy and schooling.</p>
                 </p>
               </div>
             </div>
@@ -432,35 +352,46 @@
         </div>
       </section>
 
-      <section id="radialDeveloping" class="counts section-bg" style="padding-top:0px ;">
+      <section id="lineBoxDeveloping" class="counts section-bg" style="padding-top:0px ;">
 
         <div class="container">
           <div class="section-title" data-aos="fade-in" data-aos-delay="100">
 
           </div>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <div class="section-title" data-aos="fade-in" data-aos-delay="100">
                 <h2>Navigating the Health Landscape of Developing Nations</h2>
-                <p style="margin-top: 100px; margin-left: 50px; text-align: justify;">
-                  Embark on a visual journey through the health landscapes of developing nations, illuminated by
-                  captivating radial charts
-                  meticulously crafted to unveil critical health indicators. Delve into realms of life expectancy,
-                  disease prevalence, and
-                  mortality rates intricately woven into each arc, offering a vivid portrayal of these nations' health
-                  narratives.
+                <p style="text-align: justify;"> The box plots show the median and distribution of schooling percentages for each region:
+                  <ul style="text-align: justify;">
+                      <li><strong>Asia</strong>: Median around 11</li>
+                      <li><strong>Europe</strong>: Median around 15</li>
+                      <li><strong>Africa</strong>: Median around 9</li>
+                      <li><strong>North America</strong>: Median around 12</li>
+                      <li><strong>South America</strong>: Median around 13</li>
+                      <li><strong>Oceania</strong>: Median around 14</li>
+
+                    </ul>
+
+                  <p style="text-align: justify;"> Overall, The line plot represents life expectancy, with values ranging from approximately 45 to 75 years, peaking in Europe and Oceania, and dipping in Africa.</p>
                 </p>
               </div>
             </div>
-            <div class="col-md-6">
-              <div style="padding-left:20px ;" id="radialChartDeveloping_container" class="chart-container"
+            
+            <div class="col-md-8">
+              <div style="padding-left:20px ;" id="lineBoxDeveloping_container" class="chart-container"
                 data-aos="fade-up" data-aos-delay="100">
-                <svg width="660" height="660"></svg>
+              
               </div>
             </div>
+            <p style="padding-top:40px ;"><strong>Comparison Summary</strong></p>
+              <p style="text-align: justify;">Schooling Percentage: Developed regions generally have higher median schooling percentages, with Oceania and Europe leading. Developing regions have more variation, with Africa having the lowest median.
+              Life Expectancy: Developed regions have higher life expectancies, with values in the mid-70s. Developing regions show greater disparity, with Africa having the lowest life expectancy (around 45 years), while other regions like Europe and North America are closer to developed region levels.</p>
+       
           </div>
         </div>
       </section>
+      
     </section>
     <section id="Density" class="portfolio">
       <div class="container">
@@ -530,7 +461,7 @@
   <script type="text/javascript" src="assets/js/barGraphs.js"></script>
   <script type="text/javascript" src="assets/js/scatteredPlot.js"></script>
   <script type="text/javascript" src="assets/js/boxPlot.js"></script>
-  <script type="text/javascript" src="assets/js/bubbleChart,js"></script>
+  <script type="text/javascript" src="assets/js/bubbleChart.js"></script>
   <script type="text/javascript" src="assets/js/densityPlot.js"></script>
 
 
@@ -542,7 +473,7 @@
 
   <script type="text/javascript" src="assets/js/lineChart.js"></script>
   <script src="assets/js/d3-scale-radial.js"></script>
-  <script type="text/javascript" src="assets/js/radial.js"></script>
+  <script type="text/javascript" src="assets/js/lineBoxplot.js"></script>
   <script type="text/javascript" src="assets/js/continent_chloropeth.js"></script>
 
 
