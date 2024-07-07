@@ -2,7 +2,7 @@ function createBoxPlot() {
     // Define the dimensions and margins of the graph
     const marginBoxPlot = {top: 10, right: 30, bottom: 30, left: 60},
     widthBoxPlot = 800 - marginBoxPlot.left - marginBoxPlot.right,
-    heightBoxPlot = 400 - marginBoxPlot.top - marginBoxPlot.bottom;
+    heightBoxPlot = 550 - marginBoxPlot.top - marginBoxPlot.bottom;
 
 
     const svgBoxPlotDeveloped = d3v7.select("#lineBoxDeveloped_container")
